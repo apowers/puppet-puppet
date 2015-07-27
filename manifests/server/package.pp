@@ -8,18 +8,18 @@
 #
 # === Authors
 #
-# Atom Powers <atom.powers@seattlebiomed.org>
+# Atom Powers <atom.powers@gmail.com>
 #
 class puppet::server::package (
   $ensure       = $puppet::server::package_ensure,
   $package_name = $puppet::server::package_name,
-) inherits puppet::params {
+) {
 
   validate_string($ensure, $package_name)
 
-  package { 'puppetserver':
-    ensure  => $ensure,
-    name    => $package_name,
+  package { 'puppetserver_package':
+    ensure => $ensure,
+    name   => $package_name,
   }
 
 }

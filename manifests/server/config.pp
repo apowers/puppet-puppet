@@ -9,12 +9,12 @@
 #
 # === Authors
 #
-# Atom Powers <atom.powers@seattlebiomed.org>
+# Atom Powers <atom.powers@gmail.com>
 #
 class puppet::server::config (
   $sysconfig_options  = $puppet::server::sysconfig_options,
-  $sysconfig_file     = $puppet::params::server_sysconfig_file,
-) inherits puppet::params {
+  $sysconfig_file     = $puppet::server::sysconfig_file,
+) {
 
   validate_hash($sysconfig_options)
   validate_absolute_path($sysconfig_file)
@@ -28,7 +28,7 @@ class puppet::server::config (
     group   => 'root',
     mode    => '0644',
     content => template('puppet/sysconfig.erb'),
-    require => Class['puppet::package'],
+    require => Class['puppet::server::package'],
   }
 
 }

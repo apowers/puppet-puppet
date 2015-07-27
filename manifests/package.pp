@@ -8,7 +8,7 @@
 #
 # === Authors
 #
-# Atom Powers <atom.powers@seattlebiomed.org>
+# Atom Powers <atom.powers@gmail.com>
 #
 class puppet::package (
   $ensure       = $puppet::package_ensure,
@@ -18,8 +18,8 @@ class puppet::package (
   validate_string($ensure, $package_name)
 
   package { 'puppet':
-    ensure  => $ensure,
-    name    => $package_name,
+    ensure => $ensure,
+    name   => $package_name,
   }
 
 }

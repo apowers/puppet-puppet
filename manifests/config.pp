@@ -9,14 +9,15 @@
 #
 # === Authors
 #
-# Atom Powers <atom.powers@seattlebiomed.org>
+# Atom Powers <atom.powers@gmail.com>
 #
 class puppet::config (
   $config_options     = $puppet::config_options,
   $sysconfig_options  = $puppet::sysconfig_options,
-  $config_file        = $puppet::params::config_file,
-  $sysconfig_file     = $puppet::params::sysconfig_file,
-) inherits puppet::params {
+  $config_file        = $puppet::config_file,
+  $sysconfig_file     = $puppet::sysconfig_file,
+) {
+  include puppet::params
 
   validate_hash($config_options)
   validate_hash($sysconfig_options)

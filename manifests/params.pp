@@ -8,7 +8,7 @@
 #
 # === Authors
 #
-# Atom Powers <atom.powers@seattlebiomed.org>
+# Atom Powers <atom.powers@gmail.com>
 #
 class puppet::params {
 
@@ -18,12 +18,16 @@ class puppet::params {
 ## Service Defaults
   case $::osfamily {
     'Debian': {
-      $master_service_name    = 'puppetmaster'
+      $agent_package_name     = 'puppet'
+      $server_package_name    = 'puppetserver'
+      $server_service_name    = 'puppetserver'
       $sysconfig_file         = '/etc/default/puppet'
       $server_sysconfig_file  = '/etc/default/puppetserver'
     }
     'RedHat': {
-      $master_service_name    = 'puppetmaster'
+      $agent_package_name     = 'puppet'
+      $server_package_name    = 'puppetserver'
+      $server_service_name    = 'puppetserver'
       $sysconfig_file         = '/etc/sysconfig/puppet'
       $server_sysconfig_file  = '/etc/sysconfig/puppetserver'
     }

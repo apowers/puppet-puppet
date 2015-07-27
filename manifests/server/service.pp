@@ -9,22 +9,21 @@
 #
 # === Authors
 #
-# Atom Powers <atom.powers@seattlebiomed.org>
+# Atom Powers <atom.powers@gmail.com>
 #
 class puppet::server::service (
   $enable         = $puppet::server::service_enable,
   $ensure         = $puppet::server::service_ensure,
-  $service_name   = 'puppetserver',
-) inherits puppet::params {
+  $service_name   = $puppet::server::service_name,
+) {
 
   validate_string($ensure,$service_name)
   validate_bool($enable)
 
-  service { 'puppetserver':
-    ensure     => $ensure,
-    name       => $service_name,
-    enable     => $enable,
-    subscribe  => Class['puppet::config'],
+  service { $service_name:
+    ensure    => $ensure,
+    enable    => $enable,
+    subscribe => Class['puppet::server::config'],
   }
 
 }

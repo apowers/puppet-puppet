@@ -1,10 +1,7 @@
 # == Class: puppet
 #
 # This class installs the puppet package, configuration, and agent using
-# common sense defaults. Sub-classes can be individually configured using
-# hiera.
-#
-# Validations are don in the sub-classes where heira values are imported.
+# reasonable defaults.
 #
 # === Parameters
 #
@@ -12,16 +9,18 @@
 #
 # === Authors
 #
-# Atom Powers <atom.powers@seattlebiomed.org>
+# Atom Powers <atom.powers@gmail.com>
 #
 class puppet (
-  $package_name       = 'puppet',
+  $package_name       = $puppet::params::agent_package_name,
   $package_ensure     = 'installed',
   $service_ensure     = 'running',
   $service_enable     = true,
   $config_options     = {},
   $sysconfig_options  = {},
-) {
+  $config_file        = $puppet::params::config_file,
+  $sysconfig_file     = $puppet::params::sysconfig_file,
+) inherits puppet::params {
 
   anchor { '::puppet::start': } ->
   class { '::puppet::package': } ->
