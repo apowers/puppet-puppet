@@ -14,6 +14,7 @@
 class puppet (
   $package_name       = $puppet::params::agent_package_name,
   $package_ensure     = 'installed',
+  $service_name       = $puppet::params::agent_service_name,
   $service_ensure     = 'running',
   $service_enable     = true,
   $config_options     = {},

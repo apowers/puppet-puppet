@@ -25,9 +25,9 @@ class puppet::config (
 
   $merged_sysconfig_options = merge($puppet::params::default_sysconfig_options, $sysconfig_options)
 
-  file { 'puppet_config_file':
+  file { $config_file:
     ensure  => 'file',
-    path    => $config_file,
+#    path    => $config_file,
     owner   => 'puppet',
     group   => 'root',
     mode    => '0444',

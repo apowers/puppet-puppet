@@ -19,6 +19,7 @@ class puppet::params {
   case $::osfamily {
     'Debian': {
       $agent_package_name     = 'puppet'
+      $agent_service_name     = 'puppet'
       $server_package_name    = 'puppetserver'
       $server_service_name    = 'puppetserver'
       $sysconfig_file         = '/etc/default/puppet'
@@ -26,6 +27,7 @@ class puppet::params {
     }
     'RedHat': {
       $agent_package_name     = 'puppet'
+      $agent_service_name     = 'puppet'
       $server_package_name    = 'puppetserver'
       $server_service_name    = 'puppetserver'
       $sysconfig_file         = '/etc/sysconfig/puppet'
